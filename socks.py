@@ -455,7 +455,9 @@ class socksocket(_BaseSocket):
         """
         Returns the IP and port number of the proxy.
         """
-        return super(socksocket, self).getpeername()
+        #return super(socksocket, self).getpeername()
+        # Using self.getpeername() instead of the one from socket.socket, since the gevent patched socket does not have getpeername() method
+        return self.getpeername()
 
     getproxypeername = get_proxy_peername
 
